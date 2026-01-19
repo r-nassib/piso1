@@ -41,6 +41,7 @@
   },
   "exclude": [
     "node_modules",
-    "src/frontend"
+    "src/frontend",
+    "dist"
   ]
 }

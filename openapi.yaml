@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: Search Service API
+  description: Microservicio para la búsqueda y filtrado de inmuebles en la plataforma Piso1.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Servidor de desarrollo
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      description: Verifica el estado del servicio.
+      responses:
+        '200':
+          description: Servicio operativo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+
+  /api/v1/inmuebles:
+    get:
+      summary: Buscar inmuebles
+      description: Recupera una lista de inmuebles aplicando filtros opcionales.
+      parameters:
+        - in: query
+          name: ciudad
+          schema:
+            type: string
+          description: Filtrar por nombre de la ciudad (case-insensitive)
+        - in: query
+          name: precioMin
+          schema:
+            type: number
+          description: Precio mínimo incluido
+        - in: query
+          name: precioMax
+          schema:
+            type: number
+          description: Precio máximo incluido
+      responses:
+        '200':
+          description: Lista de inmuebles encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inmueble'
+        '400':
+          description: Parámetros de búsqueda inválidos (ej. precioMin > precioMax)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/v1/inmuebles/{id}:
+    get:
+      summary: Obtener inmueble por ID
+      description: Retorna un único inmueble basado en su identificador.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del inmueble
+      responses:
+        '200':
+          description: Inmueble encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inmueble'
+        '404':
+          description: Inmueble no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Inmueble:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        titulo:
+          type: string
+          example: "Piso céntrico"
+        ciudad:
+          type: string
+          example: "Granada"
+        precio:
+          type: number
+          example: 1200
+      required:
+        - id
+        - titulo
+        - ciudad
+        - precio
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Mensaje de error descriptivo"
