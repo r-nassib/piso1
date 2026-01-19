@@ -1,0 +1,4 @@
+Intentando cargar OpenAPI desde: /Users/raulhidalgo/Documents/MASTER-INGENIERIA-INFORMATICA/Cloud-Computing/piso1/openapi.yaml
+Documento OpenAPI cargado correctamente
+Ruta /api-docs configurada
+{"level":30,"time":1768846289306,"pid":99158,"hostname":"eduroam080166.ugr.es","msg":"Search-service escuchando en puerto 3000"}

@@ -23,7 +23,7 @@ export function createApp() {
 
     // Swagger UI
     try {
-        const swaggerDocument = yaml.load(path.join(process.cwd(), "docs", "openapi.yaml"));
+        const swaggerDocument = yaml.load(path.join(process.cwd(), "openapi.yaml"));
         app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     } catch (error) {
         console.error("No se pudo cargar la documentación OpenAPI:", error);
