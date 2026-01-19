@@ -1,6 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
 import pinoHttp from "pino-http";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import yaml from "yamljs";
+import path from "path";
 import { logger } from "../../infrastructure/logger";
 import {
     InvalidFilterError,
@@ -17,6 +20,15 @@ const repo = new InMemoryInmuebleRepository();
 export function createApp() {
     const app = express();
     app.use(cors());
+
+    // Swagger UI
+    try {
+        const swaggerDocument = yaml.load(path.join(process.cwd(), "docs", "openapi.yaml"));
+        app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    } catch (error) {
+        console.error("No se pudo cargar la documentación OpenAPI:", error);
+    }
+
 
     // Logs por petición
     app.use(
