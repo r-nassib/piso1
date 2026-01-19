@@ -1,0 +1,83 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Warm Theme Palette */
+  --bg-color: #fdf6e3;
+  /* Creamy background */
+  --text-color: #5d4037;
+  /* Dark warm brown text */
+  --card-bg: #fff8f0;
+  /* Slightly lighter cream for cards */
+  --primary-color: #d84315;
+  /* Deep orange/terracotta */
+  --secondary-color: #ff7043;
+  /* Lighter orange */
+  --accent-color: #ffca28;
+  /* Mustard yellow */
+  --border-color: #d7ccc8;
+  /* Light warm gray border */
+  --success-color: #388e3c;
+  /* Natural green */
+  --error-bg: #ffccbc;
+  /* Light red/orange for errors */
+  --error-text: #bf360c;
+  /* Dark red/orange for error text */
+
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primary-color);
+}
+
+a {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: inherit;
+  transition: color 0.25s;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.1s;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px);
+}

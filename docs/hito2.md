@@ -133,3 +133,9 @@ Archivo de configuración:
 ```
 
 El pipeline se ejecuta automáticamente en cada push o pull request sobre la rama principal del proyecto.
+
+## Comprobación de los test
+
+A continuación muestro la lista de los test que se han ido ejecutando con cada modificacion.
+
+![Tests](../assets/github-actions.png)

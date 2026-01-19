@@ -1,49 +1,31 @@
-export type Inmueble = {
-    id: string;
-    ciudad: string;
-    precio: number;
-    titulo: string;
-};
-
-export class InvalidFilterError extends Error { }
-export class InmuebleNoEncontradoError extends Error { }
-
-export type FiltrosBusqueda = {
-    ciudad?: string | undefined;
-    precioMin?: number | undefined;
-    precioMax?: number | undefined;
-};
-
-export function validarFiltros(filtros: FiltrosBusqueda): void {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.InmuebleNoEncontradoError = exports.InvalidFilterError = void 0;
+exports.validarFiltros = validarFiltros;
+exports.filtrarInmuebles = filtrarInmuebles;
+class InvalidFilterError extends Error {
+}
+exports.InvalidFilterError = InvalidFilterError;
+class InmuebleNoEncontradoError extends Error {
+}
+exports.InmuebleNoEncontradoError = InmuebleNoEncontradoError;
+function validarFiltros(filtros) {
     const { precioMin, precioMax } = filtros;
-
-    if (
-        precioMin !== undefined &&
+    if (precioMin !== undefined &&
         precioMax !== undefined &&
-        precioMin > precioMax
-    ) {
-        throw new InvalidFilterError(
-            "precioMin no puede ser mayor que precioMax"
-        );
+        precioMin > precioMax) {
+        throw new InvalidFilterError("precioMin no puede ser mayor que precioMax");
     }
-
     if (precioMin !== undefined && precioMin < 0) {
         throw new InvalidFilterError("precioMin no puede ser negativo");
     }
-
     if (precioMax !== undefined && precioMax < 0) {
         throw new InvalidFilterError("precioMax no puede ser negativo");
     }
 }
-
-export function filtrarInmuebles(
-    inmuebles: Inmueble[],
-    filtros: FiltrosBusqueda
-): Inmueble[] {
+function filtrarInmuebles(inmuebles, filtros) {
     validarFiltros(filtros);
-
     const { ciudad, precioMin, precioMax } = filtros;
-
     return inmuebles.filter((i) => {
         if (ciudad && i.ciudad.toLowerCase() !== ciudad.toLowerCase()) {
             return false;
@@ -57,3 +39,4 @@ export function filtrarInmuebles(
         return true;
     });
 }
+//# sourceMappingURL=inmuebles.js.map
