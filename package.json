@@ -1,0 +1,32 @@
+{
+  "name": "piso1",
+  "version": "1.0.0",
+  "description": "**Piso1** es una aplicación web que permitirá buscar, filtrar y gestionar inmuebles (pisos, casas y habitaciones) en el contexto inmobiliario de España.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-nassib/piso1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/r-nassib/piso1/issues"
+  },
+  "homepage": "https://github.com/r-nassib/piso1#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.9",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
